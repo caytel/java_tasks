@@ -1,3 +1,74 @@
 Лабораторная по java 1
 task one
 Пользователь вводит с клавиатуры 3 целых числа, обозначающих день, месяц и год его рождения. Необходимо по введенным значениям вывести возраст человека в формате: * лет, * месяцев и * дней.
+import java.util.Scanner;
+import java.util.Calendar;
+    public class Calendar_out1 {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int day_of_Birth;
+            do {
+                System.out.println("День рождения: ");
+                while (!sc.hasNextInt()){
+                    System.out.println("Вы ввели не целое число или текст ");
+                    sc.next();
+                }
+                day_of_Birth = sc.nextInt();
+                if (day_of_Birth > 31) {
+                    System.out.println("Вы ввели число больше возможного ");
+                }
+                if (day_of_Birth <= 0) {
+                    System.out.println("Вы ввели отрицательное число ");
+                }
+            } while ((day_of_Birth <= 0) || (day_of_Birth > 31) );
+
+            int month_of_Birth;
+            do {
+                System.out.println("Месяц рождения: ");
+                while (!sc.hasNextInt()){
+
+                    System.out.println("Вы ввели не целое число или текст ");
+                    sc.next();
+                }
+                month_of_Birth = sc.nextInt();
+                if (month_of_Birth > 12) {
+                    System.out.println("Вы ввели число больше возможного ");
+                }
+                if (month_of_Birth <= 0) {
+                    System.out.println("Вы ввели отрицательное число ");
+                }
+        } while ((month_of_Birth <= 0) || (month_of_Birth > 12) );
+
+            int year_of_Birth;
+            do {
+                System.out.println("Год рождения: ");
+                while (!sc.hasNextInt()){
+
+                    System.out.println("Вы ввели не целое число или текст ");
+                    sc.next();
+                }
+                year_of_Birth = sc.nextInt();
+                if (year_of_Birth > 2022) {
+                    System.out.println("Вы ввели число больше возможного ");
+                }
+                if (year_of_Birth <= 1900) {
+                    System.out.println("Вы ввели год меньше возможного ");
+                }
+            } while ((year_of_Birth <= 1900) || (year_of_Birth > 2022) );
+
+            int years_old = (Calendar.getInstance().get(Calendar.YEAR) - year_of_Birth);
+            int months_old = (Calendar.getInstance().get(Calendar.MONTH) + 1 - month_of_Birth); /* Здесь я прибавляю к настоящему месяцу 1 так как компьютер считает месяцы с нуля. */
+            int days_old = (Calendar.getInstance().get(Calendar.DATE) - day_of_Birth);
+
+            if (months_old < 0){
+                --years_old;
+                months_old +=12;
+            }
+            if (days_old < 0){
+                --months_old;
+                days_old +=31;
+            }
+            System.out.print(years_old + " лет " + months_old + " месяцев " + days_old + " дней ");
+            sc.close();
+        }
+    }
