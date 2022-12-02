@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
                 System.out.print("Введите дату в формате dd/mm/yyyy: ");
                 Scanner sc = new Scanner(System.in);
                 String phrase = sc.nextLine();
-               Pattern p = Pattern.compile(pattern);
+                Pattern p = Pattern.compile(pattern);
                 Pattern p_1 = Pattern.compile(pattern_1);
                 Matcher m = p.matcher(phrase);
                 Matcher s = p_1.matcher(phrase);
